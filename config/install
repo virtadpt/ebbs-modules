@@ -1,0 +1,55 @@
+#!/bin/sh
+homedir=$1
+if [ "$homedir" = "" ]
+then
+    homedir=$BBSHOME;
+    if [ "$homedir" = "" ]
+    then
+        homedir=`grep \^bbs: /etc/passwd | cut -d: -f6`
+        if [ "$homedir" = "" ]
+        then
+            echo Cannot determine bbs home directory\!
+            echo You must do one of the following\:
+            echo \ \ \ \ \-\- define INSTALLDIR in the Makefile
+            echo \ \ \ \ \-\- define BBSHOME in the environment
+            echo \ \ \ \ \-\- add an entry for 'bbs' into /etc/passwd.
+            exit 1
+        fi
+    fi
+fi
+cp modcfginfo.hlp modconfig serverinfo.hlp voteinstr.txt $homedir/etc
+echo "Do you want to replace your access, info, modes, and menu.desc"
+echo -n "files currently installed in $homedir/etc? (Y/N) [N]: "
+read yesno
+if [ "$yesno" = "Y" -o "$yesno" = "y" ]
+then
+  mv $homedir/etc/access $homedir/etc/access.orig
+  cp access $homedir/etc
+  mv $homedir/etc/info $homedir/etc/info.orig
+  cp info $homedir/etc
+  mv $homedir/etc/modes $homedir/etc/modes.orig
+  cp modes $homedir/etc
+  mv $homedir/etc/menu.desc $homedir/etc/menu.desc.orig
+  cp menu.desc $homedir/etc
+  echo
+  echo "Original files saved with the extension of .orig in $homedir/etc"
+else
+  echo
+  echo "You must add to the access, info, modes, and menu.desc files"
+  echo "What must be added to these files are in files with the extension"
+  echo " of .add in this directory."
+  echo
+  echo "IMPORTANT: If using the Vote module, the information in the"
+  echo "access.add file must be added after the lines:"
+  echo
+  echo "# C_MOVEMESSAGE 98   Move a post from one board to another"
+  echo "MoveMessage=ALL"
+  echo
+  echo "and before the lines:"
+  echo
+  echo "# More can go here, for use in configurable menus."
+  echo "# ONLY NEW ENTRIES ONLY BELOW THIS POINT!"
+  echo
+  echo "If this is not done, the VoteAdmin permission will be"
+  echo " subsumed by your first new entry.  This would be *very* bad."
+fi

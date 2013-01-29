@@ -1,0 +1,33 @@
+MLIBOBJS=modules/modules.o modules/mod_extras.o modules/monitor.o \
+modules/stats.o modules/anim.o modules/query.o modules/vote.o \
+modules/postwar.o
+
+modules/modules.o: modules/modules.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) modules.c
+
+modules/mod_extras.o: modules/mod_extras.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) mod_extras.c
+
+modules/monitor.o: modules/monitor.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) monitor.c
+
+modules/stats.o: modules/stats.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) stats.c
+
+modules/anim.o: modules/anim.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) anim.c
+
+modules/query.o: modules/query.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) query.c
+
+modules/vote.o: modules/vote.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) vote.c
+
+modules/postwar.o: modules/postwar.c
+	cd modules; $(CC) -c -I.. $(CFLAGS) postwar.c
+
+modules/libmodules.a: $(MLIBOBJS)
+	-rm -f modules/libmodules.a
+	$(AR) $(ARFLAGS) modules/libmodules.a $(MLIBOBJS)
+	$(RANLIB) modules/libmodules.a
+

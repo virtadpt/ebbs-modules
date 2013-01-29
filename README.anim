@@ -1,0 +1,145 @@
+See sample.anim.plan for a sample planfile (query).
+
+Animation Commands
+
+    Animation Tags:
+        [anim]           .    Printing:            .    Clearing:
+        [noanim]         .        print            .        clear
+        [bothanim]       .        prints           .        clrtobot
+        [startanim]      .        printa           .        clrtoeol
+        [endanim]        .        printb           .
+                         .        printclr         .    Spelling:
+    Cursor Movement:     .                         .        spella
+        move             .    Random:              .        spellb
+                         .        rprint           .
+    Pauses:              .        rplace           .    Scrolling:
+        msleep           .        random_text      .        scrolla
+        sleep            .        end_random       .        scrollb
+                         .                         .        wscrolla
+    Erasing:             .    Looping:             .        wscrollb
+        erasea           .        loop             .        linescra
+        eraseb           .        endloop          .        linescrb
+
+Animation Tags:
+--------------
+[anim]
+[noanim]
+[bothanim]
+[startanim]
+[endanim]
+
+    In order for a query screen to be recognized as animated,
+    the first line _must_ be [anim] .  The [endanim] must be the _last_
+    line in the animation.  All text after the [endanim] command is
+    ignored.
+
+Cursor Movement:
+---------------
+move(line,character)
+
+    Move cursor to line and character in the animation area.  Queries are
+    from 1,1 to 18,80.  
+
+Pausing:
+-------
+msleep(delay)
+sleep(delay)
+
+    Pause for delay milliseconds (msleep) or seconds (sleep).  Maximum of
+    10 seconds.
+
+Erasing:
+-------
+erasea(line,startpos,endpos,delay)
+eraseb(line,startpos,endpos,delay)
+
+    Erase screen on line #, starting at startpos, ending at endpos, with
+    delay. a for left-to-right, b for right-to-left.
+
+Printing:
+--------
+print("text")
+prints("text")
+printa("text")
+printb("text")
+printclr("text")
+
+    These print commands will print the text at the current cursor
+    position.  The differences are where the cursor position is _after_
+    the text is printed.  print doensn't move the cursor.  prints puts the
+    cursor at the end of the text.  printa advances the cursor one
+    position to the right.  printb backs up the cursor one position to the
+    left.  Both printa and printb will wrap around the screen (a  -down,
+    b - up).  printclr advances the cursor to the first character of the
+    next line.  If the cursor is already on the last line, it will advance
+    to the first line.
+
+Random:
+------
+rprint(topline,topchar,botline,botchar,times,delay,"text")
+rplace(topline,topchar,botline,botchar,times,delay,"text")
+
+    Print text at random locations within the bounds of topline,topchar
+    and botline,botchar.  Do it number of times with delay.  rprint leaves
+    text on screen, rplace erases the previous text before printing the
+    next one. 
+
+random_display(delay)
+...
+text
+...
+end_random()
+
+    Display block of text one character at a time with delay between
+    characters until all text is displayed. 
+
+Looping:
+-------
+loop(number)
+...
+other commands
+...
+endloop()
+
+    Repeat the commands number times.  If number is 0, repeat until a key
+    is pressed.
+
+Clearing:
+--------
+clear()
+    Clear the animation part of the screen.
+
+clrtobot()
+    Clear from the cursor position to the bottom of the screen.
+
+clrtoeol()
+    Clear from the cursor position to the end of the line.
+
+Spelling:
+--------
+spella(line,startpos,delay,"text")
+spellb(line,startpos,delay,"text")
+
+    Spell out text from left-to-right (a) or right-to-left (b) on line#.
+    First character of text starts at startpos.
+
+Scrolling:
+---------
+scrolla(line,startpos,endpos,delay,"text")
+scrollb(line,startpos,endpos,delay,"text")
+
+wscrolla(line,startpos,endpos,winstart,winend,delay,"text")
+wscrollb(line,startpos,endpos,winstart,winend,delay,"text")
+
+    Scroll text on line #, 1st char of word starts at startpos, ends at
+    endpos.  To scroll off screen use 0 (to scroll off left side) and 81
+    (to scroll off right side). Remember to count the length of the text
+    in calculating the character (starting for b, ending for f) for the
+    right side of the screen).  Delay is in increments of 1/1000 of a
+    second. a for left-to-right, b for right-to left.
+
+linescra(line,delay,"text")
+linescrb(line,delay,"text)
+
+    Scroll text across entire line, scrolling on and off. a for
+    left-to-right, b for right-to-left.

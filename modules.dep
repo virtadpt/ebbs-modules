@@ -1,0 +1,12 @@
+client.o: client.c modules/modules.h
+c_post.o: c_post.c modules/modules.h
+nmenus.o: nmenus.c modules/modules.h modules/modules1.h \
+ modules/modules2.h modules/modules3.h
+modules/modules.o: modules/modules.h
+modules/mod_extras.o: modules/modules.h
+modules/monitor.o: modules/modules.h
+modules/stats.o: modules/modules.h
+modules/anim.o: modules/modules.h
+modules/query.o: modules/modules.h
+modules/postwar.o: modules/modules.h
+modules/vote.o: modules/modules.h

@@ -1,0 +1,116 @@
+Welcome to EBBS Modules 1.0
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version. See the COPYING file for further information.
+
+EBBS Modules are an addon to EBBS 3.1.1, providing extra functionality to
+the bbs system.  There are 7 modules in this initial release: 
+Module Extras, Monitor, Stats, Query, Animation, PostWar, and Voting.
+
+The 2 basic premises of the modules is to stay as much out of the standard
+code as possible, and to be independent of each other.  The main reason
+for this is to enable others to incorporate only the modules that they
+want to either stock or modified EBBS code easily.
+
+The modules add new functions to the builtin functions of EBBS.  None of
+the stock functions are removed.  The new functions are enabled by entries
+in the etc/menu.desc file.
+
+Quick Installation:
+
+If you did not unpack this distribution in the main ebbs source directory,
+move this entire directory (modules) to that main directory.
+
+From this directory run ./install
+If there all of the files were copied successfully:
+  Edit the modules.h file to comment out (with /* */) modules that you
+   don't want to enable (see below for description of modules).
+  Edit the Makefile in the main directory for local defines.
+  Do a make.
+  If there are no reported errors do a make install.
+  cd to config (that is modules/config).
+  run ./install  (This will put required files into ~bbs/etc, and give you
+                  the option of replacing other files - originals are saved.)
+  If you did not install the new versions of the config files, you must
+  edit your copies in ~bbs/etc to add the entries in the files in the
+  modules/config directory with an extension of .add.
+------------------------------
+    IMPORTANT: If using the Vote module, the information in the
+    access.add file must be added after the lines:
+
+# C_MOVEMESSAGE 98   Move a post from one board to another
+MoveMessage=ALL
+
+    and before the lines:
+
+# More can go here, for use in configurable menus.
+# ONLY NEW ENTRIES ONLY BELOW THIS POINT!
+
+    If this is not done, the VoteAdmin permission will be
+     subsumed by your first new entry.  This would be *very* bad.
+------------------------------
+
+If there all of the files were NOT copied successfully:
+  This happens if the files in your main directory differ from the
+   original ebbs-3.1.1 files.
+  Diff files were placed in the main directory for those not copied.
+  In the subdirectory modules/orig, the original ebbs-3.1.1 files are
+   included for reference.
+  Examine them for the code that has to be placed in the corresponding
+   files.
+  The file c_post.c only needs to be modified if using the Stats module.
+  The file clntcmds.h only needs to be modified if using the Vote module.
+
+If you have trouble with installation, feel free to email me at
+psnow@nipha.com
+
+
+Short description of modules included in this version:
+
+MOD_EXTRAS:
+Module Extras - This module provides 4 main things --
+                1) Extra System and User Configuration
+                2) Functions to display Server Configurations
+                3) Menu display of users online and system time
+                4) Cloak configuration
+
+MOD_MONITOR:
+Monitor - This module is an interactive monitor screen.  There are two
+  modes: long (like the Long User List) and short (like the normal
+  monitor).  The main feature of this monitor is the ability to call
+  functions directly from the monitor.  The functions are mainly those
+  found in the Talk menu, plus access to mail and read new. The "Monitor"
+  menu, included in the menu.desc.modules file, must be added to menu.desc
+  for the monitor to work.
+
+MOD_STATS:
+Stats - This module collects and displays statistics for users, currently
+  logins, posts, postwar posts (if postwar module is installed), and chat
+  entries (if Chat() is replaced by StatChat() in menu.desc).
+  A sample "Stats" menu is included in the menu.desc.modules file.
+
+MOD_QUERY:
+Query - This module enables display of stats info and animation in the
+  query.  The stats module and/or the anim module must be installed as
+  well.
+
+MOD_ANIM:
+Animation - This module enables ascii animation, currently only on the
+  query screen.  See separate file Animation.commands for information.
+
+MOD_POSTWAR:
+PostWar - This module enables a postwar mode for a specified board, and
+  collects stats for postwar posts separately from regular posts.
+
+MOD_VOTE:
+Voting - This module is based on the EBBS 2.1 voting system, but has been
+  greatly expanded, making the creation of polls more user friendly,
+  allowing a system defined number of simultaneous polls (the absolute 
+  maximum is hard coded at 25), and allowing users to open a system
+  defined number of polls as well as VoteAdmins.
+  in vote.c
+
+Paul Snow
+psnow@nipha.com

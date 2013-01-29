@@ -1,0 +1,68 @@
+menu "Vote", "Voting Booth Menu", "Enter Vote Menu Command: ", "$HE" {
+("Vote",      "Vote",      "Vote",      Vote,       $Vote,
+"(V)ote          Vote in one of the Open Polls")
+("NoVote",    "NoVote",    "NoVote",    Vote,       $NoVote,
+"(N)oVote        Mark a Poll as voted w/o voting")
+("Results",   "Results",   "Results",   0,          $VoteResults,
+"(R)esults       View previous Poll Results")
+("OpenVote",  "OpenVote",  "OpenVote",  OpenVote,   $OpenVote,
+"(O)penVote      Open a new Poll")
+("PollClose", "PollClose", "PollClose", OpenVote,  $CloseMyPolls,
+"(P)ollClose     Close one of your Polls")
+("CloseVote", "CloseVote", "CloseVote", VoteAdmin,  $CloseVote,
+"(C)loseVote     Close any open Poll")
+("Help",      "Help",      "Exit",      0,          $Help,
+"(H)elp          Get this help screen")
+("Exit",      "Help",      "Exit",      0,          $EndMenu,
+"(E)xit          Return to Main Menu")
+}
+
+menu "Monitor", "Interactive Monitor", "Enter Monitor Command: ", "$MM" {
+("Chat",         "Exit",           "Exit",        Chat,    $StatChat,
+"(C)hat          Enter the Chat system")
+("Talk",         "Talk",           "Exit",        Page,    $Talk,
+"(T)alk          Talk to another user")
+("Query",        "Query",          "Query",       GetPlan, $AdvQuery,
+"(Q)uery         Read a user's profile")
+("Mail",    "Exit",    "Exit",     OpenMail,    $MailRead,
+"(M)ail          Enter multipurpose mail read menu")
+("Pager",        "Users",          "Exit",      SetPager,  $MonSetPager,
+"(P)ager         Set your talk pager status")
+("ReadNew",     "ReadNew",         "ReadNew",   EnumBoards,  $ReadNew,
+"(R)ead New      Scan for new messages")
+("Users",        "Users",          "Exit",        Users,     $MonOnlineUsers,
+"(U)sers         Show currently connected users")
+("Name",    "Exit",     "Name",    SetUsername, $SetUsername,
+"(N)ame          Change your username")
+("Override",     "Users",          "Exit",    SetOverrides, $SetOverrides,
+"(O)verride      Allow only certain users to page")
+("Kick",         "Users",          "Exit",        Kick,    $Kick,
+"(K)ick          Kick user off of system")
+("XCloak",   "Exit",     "Exit",    Cloak,       $MonToggleCloak,
+"(X)Cloak        Hide from other users")
+("Help",         "Help",           "Help",        0,         $MonHelp,
+"(H)elp          Get this help screen")
+("Exit",    "Exit",    "Exit",     0,           $EndMenu,
+"(E)xit          Exit to main menu")
+}
+
+menu "Stats", "Statistical Lists", "Choose Stat List: ", "$LL" {
+("Logins",         "Posts",           "Exit",    0, $LoginStat,
+"(L)ogins        Top 20 Logins")
+("Posts",          "XPosts",          "Exit",    0, $PostStat,
+"(P)osts         Top 20 Posters")
+("XPosts",         "Chat",            "Exit",    0, $PostwarStat,
+"(X)Posts        Top 20 Postwar Posters")
+("Chat",           "Talker",          "Exit",    0, $ChatStat,
+"(C)hat          Top 20 Chat Entries")
+("Recent",         "Logins",          "Exit",    0, $LastLoginStat,
+"(R)ecent        20 Most Recent Logins")
+("UserStats",      "UserStats",       "Exit",    0, $UserStatDisplay,
+"(U)serStats     Display User Stats")
+("AdminStats",     "UserStats", "Exit", SetAccountInfo, $SetUserStats,
+"(A)dminStats    Change User Stats")
+("Help",           "Help",            "Help",    0, $Help,
+"(H)elp          Get this help screen")
+("Exit",           "Exit",            "Exit",    0, $EndMenu,
+"(E)xit          Exit to main menu")
+}

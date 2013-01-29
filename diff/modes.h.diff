@@ -1,0 +1,11 @@
+*** modes.h.orig	Sun Jun 27 02:54:14 1999
+--- modes.h.modules	Sun Jun 27 02:13:55 1999
+***************
+*** 37,39 ****
+--- 37,42 ----
+  #define M_MONITOR       8
+  #define M_TALK          9
+  #define M_PAGE         10
++ #define M_AFK          11
++ #define M_POSTWAR      12
++ #define M_VOTING       13

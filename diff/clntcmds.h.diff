@@ -1,0 +1,11 @@
+*** clntcmds.h.orig	Sun Jun 27 02:54:14 1999
+--- clntcmds.h.vote	Sun Jun 27 00:37:10 1999
+***************
+*** 124,128 ****
+--- 124,129 ----
+  #define C_SETCHARSET  96
+  #define C_FILECHDIR   97
+  #define C_MOVEMESSAGE 98
++ #define C_VOTEADMIN   99
+  
+  #define MAX_CLNTCMDS  256

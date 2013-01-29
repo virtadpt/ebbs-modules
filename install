@@ -1,0 +1,84 @@
+#/bin/sh
+if [ "`diff -q ../Makefile Makefile.modules`" != "" ]
+then
+  cp ../Makefile ../Makefile.orig
+  cp Makefile.modules ../Makefile
+  echo "You must edit the Makefile for local conditions"
+else
+    echo "Makefile.modules already installed."
+fi
+if [ "`diff -q ../c_post.c orig/c_post.c.orig`" != "" ]
+then
+  if [ "`diff -q ../c_post.c c_post.c.stats`" != "" ]
+  then
+    cp diff/c_post.c.diff ../
+    echo "Your c_post.c differs from ebbs-3.1.1 distribution"
+    echo "You will have to manually add the changes in c_post.c.diff."
+  else
+    echo "c_post.c.stats already installed."
+  fi
+else
+  cp ../c_post.c ../c_post.c.orig
+  cp c_post.c.stats ../c_post.c
+  echo "c_post.c.stats installed, original copied to c_post.c.orig"
+fi
+if [ "`diff -q ../client.c orig/client.c.orig`" != "" ]
+then
+  if [ "`diff -q ../client.c client.c.modules`" != "" ]
+  then
+    cp diff/client.c.diff ../
+    echo "Your client.c differs from ebbs-3.1.1 distribution"
+    echo "You will have to manually add the changes in client.c.diff."
+  else
+    echo "client.c.modules already installed."
+  fi
+else
+  cp ../client.c ../client.c.orig
+  cp client.c.modules ../client.c
+  echo "client.c.modules installed, original copied to client.c.orig"
+fi
+if [ "`diff -q ../nmenus.c orig/nmenus.c.orig`" != "" ]
+then
+  if [ "`diff -q ../nmenus.c nmenus.c.modules`" != "" ]
+  then
+    cp diff/nmenus.c.diff ../
+    echo "Your nmenus.c differs from ebbs-3.1.1 distribution"
+    echo "You will have to manually add the changes in nmenus.c.diff."
+  else
+    echo "nmenus.c.modules already installed."
+  fi
+else
+  cp ../nmenus.c ../nmenus.c.orig
+  cp nmenus.c.modules ../nmenus.c
+  echo "nmenus.c.modules installed, original copied to nmenus.c.orig"
+fi
+if [ "`diff -q ../clntcmds.h orig/clntcmds.h.orig`" != "" ]
+then
+  if [ "`diff -q ../clntcmds.h clntcmds.h.vote`" != "" ]
+  then
+    cp diff/clntcmds.h.diff ../
+    echo "clntcmds.h differs from ebbs-3.1.1 distribution"
+    echo "You will have to manually add the changes in clntcmds.h.diff."
+  else
+    echo "clntcmds.h.vote already installed."
+  fi
+else
+  cp ../clntcmds.h ../clntcmds.h.orig
+  cp clntcmds.h.vote ../clntcmds.h
+  echo "clntcmds.h.vote installed, original copied to clntcmds.h.orig"
+fi
+if [ "`diff -q ../modes.h orig/modes.h.orig`" != "" ]
+then
+  if [ "`diff -q ../modes.h modes.h.modules`" != "" ]
+  then
+    cp diff/modes.h.diff ../
+    echo "modes.h differs from ebbs-3.1.1 distribution"
+    echo "You will have to manually add the changes in modes.h.diff."
+  else
+    echo "modes.h.modules already installed."
+  fi
+else
+  cp ../modes.h ../modes.h.orig
+  cp modes.h.modules ../modes.h
+  echo "modes.h.modules installed, original copied to modes.h.orig"
+fi

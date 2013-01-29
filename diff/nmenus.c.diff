@@ -1,0 +1,96 @@
+*** nmenus.c.orig	Sun Jun 27 02:54:14 1999
+--- nmenus.c.modules	Sun Jun 27 00:37:11 1999
+***************
+*** 1,8 ****
+- 
+  /*
+  Eagles Bulletin Board System
+  Copyright (C) 1995, Ray Rocker, rocker@datasync.com
+  
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+--- 1,10 ----
+  /*
+  Eagles Bulletin Board System
+  Copyright (C) 1995, Ray Rocker, rocker@datasync.com
+  
++ EBBS Modules
++ Copyright (C) 1999, Paul Snow, psnow@nipha.com
++ 
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+***************
+*** 18,23 ****
+--- 20,29 ----
+  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  */
+  
++ #ifdef MODULES
++ #include "modules/modules.h"
++ #endif
++ 
+  #include "client.h"
+  #include <ctype.h>
+  #if LACKS_MALLOC_H
+***************
+*** 113,118 ****
+--- 119,127 ----
+            prints("(You have mail.)");
+        }
+        while(cmd != '\n') {
++ #ifdef MOD_EXTRAS
++           display_users_online();
++ #endif
+            item = msp->menucommands[GetMenuIndex(cmd)] ;
+            if(item != NULL && HasPerm(item->enabled)) {
+                move(1,comm_loc);
+***************
+*** 241,246 ****
+--- 250,258 ----
+            prints("(You have mail.)");
+        }
+        while(cmd != '\n') {
++ #ifdef MOD_EXTRAS
++           display_users_online();
++ #endif
+            selitem = msp->menucommands[GetMenuIndex(cmd)] ;
+            if(selitem != NULL && HasPerm(selitem->enabled)) {
+              if (!(myinfo.flags & FLG_EXPERT)) {
+***************
+*** 450,455 ****
+--- 462,470 ----
+  #ifndef REMOTE_CLIENT
+  int SelectEditor(), SelectProtocol(), FileReadMenuProto(), FileView();
+  #endif
++ #ifdef MODULES
++ #include "modules/modules1.h"
++ #endif
+  
+  struct funcs funclist[] = {
+      "exec", exec_func,
+***************
+*** 514,519 ****
+--- 529,537 ----
+  #ifndef REMOTE_CLIENT
+      "SelectEditor",SelectEditor,
+  #endif
++ #ifdef MODULES
++ #include "modules/modules2.h"
++ #endif
+      "SignatureEdit",SignatureEdit,
+      "MenuConfig",MenuConfig,
+      NULL,NULL
+***************
+*** 646,651 ****
+--- 664,672 ----
+  #ifndef REMOTE_CLIENT
+      "FileView",FileView,
+      "FileReadMenuProto",FileReadMenuProto,
++ #endif
++ #ifdef MODULES
++ #include "modules/modules3.h"
+  #endif
+      "FileReceive",FileReceive,
+      "FileReadMenuSelect",FileReadMenuSelect,

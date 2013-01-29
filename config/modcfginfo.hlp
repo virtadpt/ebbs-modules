@@ -1,0 +1,20 @@
+ Cloak :                Cloak available (yes/no/sysop-only), sysop-only
+                         means the account defined in SYSOP_ACCOUNT 
+                         (Normally 'SYSOP') is the only account that can
+                         cloak.
+
+ Display Users Online:  Show number of users online and time at bottom of
+                         menu screen (yes/no).
+
+ Postwar Board:         Name of the Post War Board.
+
+ Max Polls:             Maximum number of open polls (Votes).
+
+ Max User Polls:        Maximum number of open polls by one user (Votes).
+
+ Post Vote:             Post voting results to a board (yes/no).  If no
+                         results are placed in a file with the most recent
+                         results first.
+
+ Vote Board:            Name of the Voting Results Board.
+

@@ -1,0 +1,29 @@
+Welcome to EBBS Modules 1.0
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2, or (at your option)
+any later version. See the COPYING file for further information.
+
+EBBS Modules are an addon to EBBS 3.1.1, providing extra functionality to
+the bbs system.  There are 7 modules in this initial release: 
+Module Extras, Monitor, Stats, Query, Animation, PostWar, and Voting.
+
+The 2 basic premises of the modules is to stay as much out of the standard
+code as possible, and to be independent of each other.  The main reason
+for this is to enable others to incorporate only the modules that they
+want to either stock or modified EBBS code easily.
+
+The modules add new functions to the builtin functions of EBBS.  None of
+the stock functions are removed.  The new functions are enabled by entries
+in the etc/menu.desc file.
+
+This distribution should have been unpacked in your ebbs source directory.
+Updates to this distribution will be found at ftp.nipha.com in the /pub
+directory.
+
+This readme file is incomplete.  Please read INSTALL.modules for
+information on the modules.
+
+Paul Snow
+psnow@nipha.com

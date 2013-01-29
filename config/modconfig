@@ -1,0 +1,28 @@
+# This is the bbs modules config file. 
+#
+# Startup information is given here in name=value form. The things you
+# specify here are:
+#
+# cloak:        Cloak available (yes/no/sysop-only), means the
+#                SYSOP_ACCOUNT only
+#
+# usersonline:  Show number of users online and time at bottom of
+#                menu screen (yes/no).
+#
+# postwarboard: Name of the Post War Board (#define MOD_POSTWAR)
+#
+# maxpolls:     Maximum number of open polls (#define MOD_VOTE)
+#
+# maxuserpolls: Maximum number of open polls by one user (#define MOD_VOTE)
+#
+# postvote:     Post voting results to a board  (#define MOD_VOTE)
+#
+# voteboard:    Name of the Voting Results Board (#define MOD_VOTE)
+#
+cloak=sysop-only
+usersonline=yes
+postwarboard=TheZone
+maxpolls=9
+maxuserpolls=1
+postvote=yes
+voteboard=Polls

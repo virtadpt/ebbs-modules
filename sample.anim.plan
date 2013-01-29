@@ -1,0 +1,426 @@
+[anim]
+[noanim]
+Hi!
+
+You have to have animations turned on to see this plan in all its glory.
+
+[TAB][3][5][7] - To turn animations on.
+
+[startanim]
+
+       So you want to know how to animate your plan....
+
+       First a couple of very important things:
+
+    1.  The first line of an animated plan has to be:
+         [anim]
+        It needs to be on the line by itself, and without spaces before it.
+
+    2.  The last line of an animated plan has to be:
+         [endanim]
+
+    3.  %s 's don't work in animations (yet), and the loop() command
+         doesn't work yet either (yet).
+linescra(1,10,">>---->")
+linescrb(16,10,"<----<<")
+linescra(1,10,">>---->")
+linescrb(16,10,"<----<<")
+linescra(1,10,">>---->")
+linescrb(16,10,"<----<<")
+sleep(3)
+clear()
+ 1       11111111112222222222333333333344444444445555555555666666666677777777778
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+ 3
+ 4  This is a demo of all the available animation commands.
+ 5
+ 6   Plan files have a 16x80 screen available.  The numbers across and
+ 7   down are the coordinates for the screen.
+ 8
+ 9   This . is at 9,11
+10
+11                                                This . is at 11,56
+12  The commands to replace the second . with a * are:
+13    move(11,56)
+14    print("*")
+15
+16  We'll do that after a 10 second pause
+sleep(10)
+move(11,56)
+print("*")
+move(16,3)
+clrtoeol()
+  We will pause again for 3 seconds
+sleep(3)
+move(12,0)
+clrtobot()
+12  That is how you put text at different places on the screen.
+13  First move the cursor with the move(x,y) command, then
+14   print the text with a print("text") command.
+15
+16  We'll clear the screen in 3 seconds.
+sleep(3)
+clear()
+sleep(1)
+   Besides the printing and moving, there are 2 other basic types of
+     commands -- pausing and clearing.
+
+   The pausing commands are sleep(delay) and msleep(delay).
+   The delay is in seconds for sleep and milliseconds for msleep.
+
+   The clearing commands are clear() to clear the entire screen,
+    clrtobot() to clear from the cursor position to the bottom of the screen
+    clrtoeol() to clear from the cursor position to the end of the line.
+
+   We will now run the following code:
+   sleep(3)
+   move(11,20)
+   clrtoeol()
+   sleep(3)
+sleep(3)
+move(11,20)
+clrtoeol()
+sleep(3)
+move(11,0)
+   Now we will run the following code:
+   sleep(3)
+   move(12,0)
+   clrtobot()
+sleep(3)
+move(12,0)
+clrtobot()
+sleep(3)
+move(11,0)
+   And finally the following code:
+   sleep(3)
+   clear()
+   sleep(3)
+sleep(3)
+clear()
+sleep(3)
+
+  If this is confusing, don't worry, you will catch on after reading
+through all the animation documentation.
+
+  PLUS there are some one line commands that will do all the moving and
+  printing for you.
+
+  Here are a pair that will scroll the text across the screen:
+    linescra and linesrcb
+  any time you see an 'a' at the end of a command name, it means to
+  go from left to right (advance), a 'b' means right to left (back).
+
+  Here is the command we are runnning: 
+    linescra(16,100,"Animate Your Life")
+  The first number is the line to use, the second is the millisecond delay
+linescra(16,100,"Animate Your Life")
+move(13,0)
+  And now we will run it backwards:
+    linescrb(16,100,"Animate Your Life")
+linescrb(16,100,"Animate Your Life")
+move(13,0)
+  And now we speed it up:
+    linescra(16,10,"Animate Your Life")
+linescra(16,10,"Animate Your Life")
+move(8,0)
+clrtobot()
+  Here are a pair that will spell out the text across the screen:
+    spella and spellb
+
+  Here's the code:
+    spella(16,20,100,"Animate Your Life")
+   The first number is the line, the second is the character on that line
+    wher the first letter will be, and the third is the millisecond delay.
+sleep(3)
+spella(16,20,100,"Animate Your Life")
+sleep(3)
+move(11,0)
+  Now we'll do it backwards:
+    spellb(16,20,100,"Animate Your Life")
+sleep(1)
+move(16,0)
+clrtoeol()
+spellb(16,20,100,"Animate Your Life")
+sleep(3)
+move(8,0)
+clrtobot()
+   Now for a couple random commands:
+    rplace and rprint
+     rplace will put the text anywhere within the borders you define, and
+     erase it before it puts it somewhere else.     rprint won't erase it.
+   We will run these commands:
+     rplace(1,1,7,80,10,1000,"Animate Your Life")
+     rprint(1,1,7,80,10,1000,"Animate Your Life")
+   The first four numbers define the borders (1,1 to 7,80)
+   The fifth tells how many times, and the sixth the millisecond delay.
+sleep(3)
+move(1,0)
+clrtoeol()
+move(2,0)
+clrtoeol()
+move(3,0)
+clrtoeol()
+move(4,0)
+clrtoeol()
+move(5,0)
+clrtoeol()
+move(6,0)
+clrtoeol()
+move(7,0)
+clrtoeol()
+rplace(1,1,7,80,10,1000,"Animate Your Life")
+rprint(1,1,7,80,10,1000,"Animate Your Life")
+clear()
+
+
+
+                And now for the full list of commands:
+move(7,0)
+  o/
+ /#
+ / \
+move(7,0)
+  __o__
+    #
+   /|
+move(7,0)
+   \ o
+  __#\
+    |
+move(7,0)
+   __ |
+     ##o
+    /  \
+move(7,0)
+    \  /
+     ##o
+    /  \
+move(7,0)
+       | __
+     __##o
+        |
+move(7,0)
+        __|
+          #__
+         /o
+move(7,0)
+         \ /
+          #
+         /o\
+move(7,0)
+          |__
+        __#
+          o\
+move(7,0)
+          __ |
+           o##__
+            |
+move(7,0)
+             \  /
+             o##
+             /  \
+move(7,0)
+              | __
+             o##
+             /  \
+move(7,0)
+                o /
+                /#__
+                 |
+move(7,0)
+                 o/
+                /#
+                 |\
+move(7,0)
+                   o/
+                  /#
+                  / \
+move(7,0)
+                   __o__
+                     #
+                    /|
+move(7,0)
+                    \ o
+                   __#\
+                     |
+move(7,0)
+                    __ |
+                      ##o
+                     /  \
+move(7,0)
+                     \  /
+                      ##o
+                     /  \
+move(7,0)
+                        | __
+                      __##o
+                         |
+move(7,0)
+                         __|
+                           #__
+                          /o
+move(7,0)
+                          \ /
+                           #
+                          /o\
+move(7,0)
+                           |__
+                         __#
+                           o\
+move(7,0)
+                           __ |
+                            o##__
+                             |
+move(7,0)
+                              \  /
+                              o##
+                              /  \
+move(7,0)
+                               | __
+                              o##
+                              /  \
+move(7,0)
+                                 o /
+                                 /#__
+                                  |
+move(7,0)
+                                  o/
+                                 /#
+                                  |\
+move(7,0)
+                                    o/
+                                   /#
+                                   / \
+move(7,0)
+                                    __o__
+                                      #
+                                     /|
+move(7,0)
+                                     \ o
+                                    __#\
+                                      |
+move(7,0)
+                                     __ |
+                                       ##o
+                                      /  \
+move(7,0)
+                                      \  /
+                                       ##o
+                                      /  \
+move(7,0)
+                                         | __
+                                       __##o
+                                          |
+move(7,0)
+                                          __|
+                                            #__
+                                           /o
+move(7,0)
+                                           \ /
+                                            #
+                                           /o\
+move(7,0)
+                                            |__
+                                          __#
+                                            o\
+move(7,0)
+                                            __ |
+                                             o##__
+                                              |
+move(7,0)
+                                               \  /
+                                               o##
+                                               /  \
+move(7,0)
+                                                | __
+                                               o##
+                                               /  \
+move(7,0)
+                                                  o /
+                                                  /#__
+                                                   |
+move(7,0)
+                                                   o/
+                                                  /#
+                                                   |\
+move(7,0)
+                                                     o/
+                                                    /#
+                                                    / \
+move(7,0)
+                                                     __o__
+                                                       #
+                                                      /|
+move(7,0)
+                                                      \ o
+                                                     __#\
+                                                       |
+move(7,0)
+                                                      __ |
+                                                        ##o
+                                                       /  \
+move(7,0)
+                                                       \  /
+                                                        ##o
+                                                       /  \
+move(7,0)
+                                                          | __
+                                                        __##o
+                                                           |
+move(7,0)
+                                                           __|
+                                                             #__
+                                                            /o
+move(7,0)
+                                                            \ /
+                                                             #
+                                                            /o\
+move(7,0)
+                                                             |__
+                                                           __#
+                                                             o\
+move(7,0)
+                                                             __ |
+                                                              o##__
+                                                               |
+move(7,0)
+                                                                \  /
+                                                                o##
+                                                                /  \
+move(7,0)
+                                                                 | __
+                                                                o##
+                                                                /  \
+move(7,0)
+                                                                   o /
+                                                                   /#__
+                                                                    |
+move(7,0)
+                                                                    o/
+                                                                   /#
+                                                                    |\
+move(7,0)
+                                                                      o/
+                                                                     /#
+                                                                     / \
+sleep(3)
+clear()
+move(1,1)
+Tags:   [anim]           .    Printing:            .    Clearing:
+        [noanim]         .        print            .        clear
+        [bothanim]       .        prints           .        clrtobot
+        [startanim]      .        printa           .        clrtoeol
+        [endanim]        .        printb           .
+                         .        printclr         .    Spelling:
+    Cursor Movement:     .                         .        spella
+        move             .    Random:              .        spellb
+                         .        rprint           .
+    Pauses:              .        rplace           .    Scrolling:
+        msleep           .        random_text      .        scrolla
+        sleep            .        end_random       .        scrollb
+                         .                         .        wscrolla
+    Erasing:             .    Looping:             .        wscrollb
+        erasea           .        loop             .        linescra
+        eraseb           .        endloop          .        linescrb
+[endanim]
+ 

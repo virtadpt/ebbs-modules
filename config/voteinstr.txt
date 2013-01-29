@@ -1,0 +1,9 @@
+
+To vote in the polls, enter the (Y)Vote menu and (V)ote.
+
+To pass on voting on a specific poll, enter the (Y)Vote menu and (N)oVote.
+
+To turn off this notification, for this and *all* future polls,
+ enter the (X)yz menu, choose (X)traConfig,
+ and change the vote notification to 'N'
+
